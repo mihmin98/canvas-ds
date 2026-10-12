@@ -1,15 +1,27 @@
 #!/bin/bash
 
-LAUNCHER_SCRIPT="/roms/ports/start_es_rgds.sh"
-
-# Structural safety check: Ensure the user actually copied the launcher script to ports
-if [ ! -f "$LAUNCHER_SCRIPT" ]; then
-    echo "ERROR! Could not find the launcher script at $LAUNCHER_SCRIPT"
-    echo "Please ensure start_es_rgds.sh is copied into your /roms/ports/ directory."
+THEME_PATH=""
+if [ -d "/roms/themes/canvas-ds" ]; then
+    THEME_PATH="/roms/themes/canvas-ds"
+elif [ -d "/roms/themes/canvas-ds-main" ]; then
+    THEME_PATH="/roms/themes/canvas-ds-main"
+elif [ -d "/storage/.config/emulationstation/themes/canvas-ds" ]; then
+    THEME_PATH="/storage/.config/emulationstation/themes/canvas-ds"
+elif [ -d "/storage/.config/emulationstation/themes/canvas-ds-main" ]; then
+    THEME_PATH="/storage/.config/emulationstation/themes/canvas-ds-main"
+else
+    echo "ERROR! Couldn't find a canvas-ds theme folder on your device!"
     exit 1
 fi
 
-# Bind the standalone ports launcher to override the default system window initialization
+LAUNCHER_SCRIPT="${THEME_PATH}/scripts/start_es_rgds.sh"
+
+if [ ! -f "$LAUNCHER_SCRIPT" ]; then
+    echo "ERROR! Could not find the launcher script at $LAUNCHER_SCRIPT"
+    exit 1
+fi
+
+# Bind the theme's launcher to override the default system window initialization
 chmod +x "$LAUNCHER_SCRIPT"
 mount --bind "$LAUNCHER_SCRIPT" "/usr/bin/start_es.sh"
 

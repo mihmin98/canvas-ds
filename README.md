@@ -1,12 +1,12 @@
 # Canvas DS (Rocknix)
 
-**Canvas DS** is a dual screen adaptation of my favorite ES-DE theme Canvas-ES specifically targeting the Anbernic RD DS. 
+**Canvas DS** is a dual screen adaptation of my favorite ES-DE theme Canvas-ES specifically targeting the Anbernic RG DS and Anbernic RG DS Plus. 
 
 I tried to adapt and extend as much functionality from the original theme as possible to look good on a dual screen setup while remaining faithful to the original theme's colors, art, icons and layout.
 
 This project is built using [**Canvas (ES Version)**](https://github.com/Siddy212/canvas-es) as a core framework, heavily adapted to natively support dual-screen aspect ratios inspired by structural layouts from the [**dii-ess-aye**](https://github.com/beebono/dii-ess-aye) theme.
 
-### DISCLAIMER: This is an Anbernic RG-DS exclusive theme for ROCKNIX only.
+### DISCLAIMER: This is an Anbernic RG-DS / RG-DS Plus exclusive theme for ROCKNIX only.
 
 # Known Issues (that won't be fixed)
 1. Keyboard and horizontally longer popups are incorrectly sized.
@@ -19,26 +19,32 @@ This project is built using [**Canvas (ES Version)**](https://github.com/Siddy21
 2. Copy the contents of this repository into your themes folder under a folder named `canvas-ds`
   - Either connect to your network share and put it in the `themes` folder
   - Or copy it to `/STORAGE/.config/emulationstation/themes/` directly
-3. Copy both the `enable_theme_rgds.sh` and the `start_es_rgds.sh` scripts from the repository's `scripts` folder into your `roms/ports` folder
-  - !!! NOTE: If you downloaded the theme as a zip, you may need to re-enable execution on the `enable_theme_*.sh` script either
-              after extraction on your computer or on the device via ssh. Use `chmod +x enable_theme_*.sh` for either method.
+3. Copy only the enable script for your device from the repository's `scripts` folder into your `roms/ports` folder. The matching `start_es_*.sh` launcher is used directly from the theme's `scripts` folder.
+  - Anbernic RG DS: `enable_canvas-ds_theme_rgds.sh`
+  - Anbernic RG DS Plus: `enable_canvas-ds_theme_rgdsplus.sh`
+  - !!! NOTE: If you downloaded the theme as a zip, you may need to re-enable execution on the `enable_canvas-ds_theme_*.sh` script either
+              after extraction on your computer or on the device via ssh. Use `chmod +x enable_canvas-ds_theme_*.sh` for either method.
 4. After updating your gamelists, open your ports section on your device and
-  - Either run the `enable_theme_rgds.sh` script every time you want to enable the theme
+  - Either run the `enable_canvas-ds_theme_*.sh` script every time you want to enable the theme
     - (You will have to manually change the theme setting when you want to switch back)
-  - Or set the `enable_theme_rgds.sh` script to run at launch by opening the Advanced Game Options (remember you can access this by pressing X twice) and turning on that option
+  - Or set the `enable_canvas-ds_theme_*.sh` script to run at launch by opening the Advanced Game Options (remember you can access this by pressing X twice) and turning on that option
     - Optionally, set the enable script's metadata Hidden option if you don't want it to clutter the ports
+
+#### Anbernic RG DS Plus
+
+Use `enable_canvas-ds_theme_rgdsplus.sh` from the `scripts` directory. It places the DSI-2 top panel and DSI-1 bottom panel side by side and launches EmulationStation on a 3072x768 canvas (three 1024x768 screens), reusing the RG DS layout with pixel-based values (corners, paddings) scaled up. Requires a ROCKNIX build with RG DS Plus support. Do not use the RG DS scripts on the Plus.
 
 #### For Users who previously installed the DII-ESS-AYE theme.
 
-If you previously installed the [**dii-ess-aye**](https://github.com/beebono/dii-ess-aye) theme you still need to replace the `enable_theme_rgds.sh` and also copy the `start_es_rgds.sh` to the `/roms/ports` folder.
+If you previously installed the [**dii-ess-aye**](https://github.com/beebono/dii-ess-aye) theme you still need to replace its enable script (`enable_theme_rgds.sh` or `enable_dii-ess-aye_theme_*.sh` in newer versions) with the `enable_canvas-ds_theme_*.sh` for your device.
 
-The `enable_theme_rgds.sh` from **dii-ess-aye** theme will also change your theme selection so you will have to swap themes everytime you start your device. I rewrote the `enable_theme_rgds.sh` to be theme agnostic. This is also why we need to copy the `start_es_rgds.sh` into the `/roms/ports` folder so we do not need to go and search it in dii-ess-eye or canvas-ds folders.
+The enable script from **dii-ess-aye** theme will also change your theme selection so you will have to swap themes everytime you start your device. The `enable_canvas-ds_theme_*.sh` scripts do not change your theme selection.
 
 ### Uninstall
 1. If your enable script is set to auto start: Start Menu -> System Settings -> Frontend Developer Options -> Stop Running This Game At Startup
 2. Switch your theme back to SYSTEM-THEME: Start Menu -> User Inferface Settings -> Theme Set
 3. Reboot
-4. If your enable and start scripts are hidden either manually delete the scripts completely from `/roms/ports`, or
+4. If your enable script is hidden either manually delete the script completely from `/roms/ports`, or
   1. Go to Start Menu -> User Interface Settings -> Enable Show Hidden Files
   2. Go to your Ports section in EmulationStation and highlight the script
   3. Press X -> Edit This Game's Metadata -> Select the DELETE button at the bottom
@@ -181,7 +187,7 @@ Check them out along with further explanation on how to customize the theme [her
 
 ## **Acknowledgments**
 
-**Code structure, file layouts, tips, and theme paths** were guided by the outlines from [Ant - ArtBookNext](https://github.com/anthonycaccese/art-book-next-es) as well as with the help and inspiration from [**dii-ess-aye**](https://github.com/beebono/dii-ess-aye) to achieve dual screen layout on RG-DS
+**Code structure, file layouts, tips, and theme paths** were guided by the outlines from [Ant - ArtBookNext](https://github.com/anthonycaccese/art-book-next-es) as well as with the help and inspiration from [**dii-ess-aye**](https://github.com/beebono/dii-ess-aye) to achieve dual screen layout on RG-DS and RG-DS Plus
 
 **Artwork was designed and created by the following artists and credit is provided to them.**
 - Most of the dual screen layout has been inspired by the [dii-ess-aye](https://github.com/beebono/dii-ess-aye) theme created by [beebono](https://github.com/beebono)

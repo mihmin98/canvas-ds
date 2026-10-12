@@ -3,7 +3,7 @@
 
 <!--
 4:3 aspect ratio variables
-based on 640x480
+based on 640x480 (RG DS), scales to 1024x768 (RG DS Plus)
 -->
 
 	<!-- Variables -->
@@ -112,6 +112,13 @@ based on 640x480
 		<CornersSmall>10</CornersSmall>
 		<CornersMedium>20</CornersMedium>
 		<CornersLarge>30</CornersLarge>
+	</variables>
+	<!-- RG DS Plus (1024x768 screens): pixel values scaled x1.6 -->
+	<variables if="${screen.width} == 3072">
+		<CornersGrid>8</CornersGrid>
+		<CornersSmall>16</CornersSmall>
+		<CornersMedium>32</CornersMedium>
+		<CornersLarge>48</CornersLarge>
 	</variables>
 
 

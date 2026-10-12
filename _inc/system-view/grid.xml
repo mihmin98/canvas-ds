@@ -186,6 +186,7 @@
         <container ifSubset="icon-scheme:icon|custom-icon">
           <scale>1</scale>
           <padding>10 10 10 10</padding>
+          <padding if="${screen.width} == 3072">16 16 16 16</padding>
           <storyboard event="activate">
             <animation
                             property="scale"
